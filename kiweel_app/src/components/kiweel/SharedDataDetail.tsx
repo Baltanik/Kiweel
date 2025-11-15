@@ -108,7 +108,7 @@ export function SharedDataDetail({ sharedDataId, isOpen, onClose }: SharedDataDe
 
       // Log access
       if (user) {
-        await logAccess('view');
+        await logAccess();
       }
 
     } catch (error) {
@@ -142,7 +142,7 @@ export function SharedDataDetail({ sharedDataId, isOpen, onClose }: SharedDataDe
     }
   };
 
-  const logAccess = async (action: string) => {
+  const logAccess = async () => {
     if (!user || !sharedDataId) return;
 
     try {
@@ -172,7 +172,7 @@ export function SharedDataDetail({ sharedDataId, isOpen, onClose }: SharedDataDe
       if (error) throw error;
 
       setSharedData(prev => prev ? { ...prev, visibility: newVisibility } : null);
-      await logAccess(`visibility_changed_to_${newVisibility}`);
+      await logAccess();
       
       toast.success(`Visibilità cambiata a ${newVisibility === 'private' ? 'privato' : 'condiviso'}`);
 
@@ -208,7 +208,7 @@ export function SharedDataDetail({ sharedDataId, isOpen, onClose }: SharedDataDe
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
 
-      await logAccess('download');
+      await logAccess();
       toast.success("Dati scaricati con successo");
 
     } catch (error) {

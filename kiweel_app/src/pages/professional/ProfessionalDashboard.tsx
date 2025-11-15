@@ -202,7 +202,7 @@ export default function ProfessionalDashboard() {
           type: 'shared_data',
           title: 'Dati condivisi',
           description: `${data.data_type}${data.category ? ` - ${data.category}` : ''}`,
-          timestamp: data.created_at,
+          timestamp: data.created_at || new Date().toISOString(),
           client_name: data.users?.name || 'Cliente'
         });
       });

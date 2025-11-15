@@ -240,9 +240,7 @@ export class NotificationService {
       userId,
       'Prenotazione Confermata',
       `La tua prenotazione per ${bookingDetails.service} è stata confermata per il ${bookingDetails.date} alle ${bookingDetails.time}`,
-      'booking',
-      '/calendar',
-      { booking_id: bookingDetails.id }
+      'booking'
     );
   }
 
@@ -251,9 +249,7 @@ export class NotificationService {
       userId,
       'Appuntamento Completato',
       `Hai completato il tuo appuntamento e guadagnato ${tokensAwarded} tokens! 🎉`,
-      'success',
-      '/missions',
-      { tokens_awarded: tokensAwarded }
+      'success'
     );
   }
 
@@ -263,9 +259,7 @@ export class NotificationService {
       userId,
       'Nuovo Piano Disponibile',
       `Il tuo ${planLabel} "${planName}" è ora disponibile!`,
-      'plan',
-      planType === 'diet' ? '/diet' : '/workout',
-      { plan_type: planType, plan_name: planName }
+      'plan'
     );
   }
 
@@ -274,9 +268,7 @@ export class NotificationService {
       userId,
       'Missione Completata',
       `Hai completato "${missionTitle}" e guadagnato ${tokensAwarded} tokens! 🏆`,
-      'mission',
-      '/missions',
-      { mission_title: missionTitle, tokens_awarded: tokensAwarded }
+      'mission'
     );
   }
 
@@ -285,9 +277,7 @@ export class NotificationService {
       userId,
       'Tokens Guadagnati',
       `Hai guadagnato ${amount} tokens per: ${reason}`,
-      'token',
-      '/missions',
-      { tokens_awarded: amount, reason }
+      'token'
     );
   }
 
@@ -296,9 +286,7 @@ export class NotificationService {
       userId,
       'Nuovi Dati Condivisi',
       `${professionalName} ha condiviso con te nuovi dati: ${dataType}`,
-      'info',
-      '/shared-data',
-      { professional_name: professionalName, data_type: dataType }
+      'info'
     );
   }
 }
