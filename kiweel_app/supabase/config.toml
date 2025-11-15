@@ -1,0 +1,7 @@
+project_id = "rivuxeqncrnyrnlympcg"
+
+[functions.send-booking-notification]
+verify_jwt = false
+
+[functions.assign-role]
+verify_jwt = true

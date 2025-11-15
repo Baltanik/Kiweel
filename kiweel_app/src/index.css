@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 215 25% 27%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 27%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 27%;
+
+    /* Primary Green Wellness #10B981 - Kiweel Brand Color */
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary Teal #14B8A6 */
+    --secondary: 173 80% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Success Green #10B981 */
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+
+    /* Error Red #EF4444 */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --muted: 220 13% 95%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 160 84% 95%;
+    --accent-foreground: 160 84% 39%;
+
+    --border: 160 20% 90%;
+    --input: 160 20% 90%;
+    --ring: 160 84% 39%;
+
+    --radius: 0.75rem;
+
+    /* Kiweel specific colors */
+    --nav-background: 0 0% 100%;
+    --nav-border: 160 20% 90%;
+    --nav-active: 160 84% 39%;
+    
+    /* Category pin colors */
+    --pin-parrucchiere: 280 80% 60%;
+    --pin-dentista: 200 90% 55%;
+    --pin-idraulico: 0 84% 60%;
+    --pin-elettricista: 45 93% 47%;
+    --pin-avvocato: 215 25% 27%;
+    --pin-fotografo: 290 70% 50%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 217 33% 17%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 217 33% 17%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 173 80% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --muted: 160 20% 20%;
+    --muted-foreground: 160 20% 65%;
+
+    --accent: 160 20% 20%;
+    --accent-foreground: 160 84% 39%;
+
+    --border: 160 20% 20%;
+    --input: 160 20% 20%;
+    --ring: 160 84% 39%;
+
+    --nav-background: 160 20% 17%;
+    --nav-border: 160 20% 20%;
+    --nav-active: 160 84% 39%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Mapbox popup customization */
+.mapboxgl-popup {
+  z-index: 50 !important;
+}
+
+.mapboxgl-popup-content {
+  padding: 0 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+  max-width: calc(100vw - 40px) !important;
+}
+
+.mapboxgl-popup-close-button {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  padding: 0 !important;
+  color: white !important;
+  right: 12px !important;
+  top: 12px !important;
+  width: 20px !important;
+  height: 20px !important;
+  line-height: 20px !important;
+  text-align: center !important;
+  background: none !important;
+  border: none !important;
+  z-index: 10 !important;
+  transition: opacity 0.2s !important;
+}
+
+.mapboxgl-popup-close-button:hover {
+  opacity: 0.7;
+}
+
+.mapboxgl-popup-tip {
+  display: none !important;
+}
+
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-content {
+  margin-bottom: 10px !important;
+}
+
+.mapboxgl-popup-anchor-top .mapboxgl-popup-content {
+  margin-top: 10px !important;
+}
+
+/* Mapbox controls positioning to avoid overlap with search bar */
+.mapboxgl-ctrl-top-right {
+  top: 40px !important;
+  right: 16px !important;
+}
+
+.mapboxgl-ctrl-top-left {
+  top: 40px !important;
+  left: 16px !important;
+}
+
+/* Ensure controls are properly styled */
+.mapboxgl-ctrl-group {
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  background: hsl(var(--background)) !important;
+}
+
+.mapboxgl-ctrl-group button {
+  background: hsl(var(--background)) !important;
+  color: hsl(var(--foreground)) !important;
+  border: none !important;
+  width: 32px !important;
+  height: 32px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.mapboxgl-ctrl-group button:hover {
+  background: hsl(var(--muted)) !important;
+}
+
+.mapboxgl-ctrl-group button:not(:last-child) {
+  border-bottom: 1px solid hsl(var(--border)) !important;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .mapboxgl-ctrl-top-right {
+    top: 32px !important;
+    right: 12px !important;
+  }
+  
+  .mapboxgl-ctrl-top-left {
+    top: 32px !important;
+    left: 12px !important;
+  }
+}
