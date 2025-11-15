@@ -7,7 +7,6 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "@/components/ui/sonner";
 import { TokenService } from "@/integrations/tokens/tokenService";
-import { TOKEN_REWARDS } from "@/lib/constants";
 
 interface WorkoutPlan {
   id: string;
@@ -193,10 +192,10 @@ export function WorkoutPlanViewer() {
 
     try {
       // Save workout completion in progress_tracking
-      const { error: progressError } = await supabase
-        .from("progress_tracking")
-        .insert({
-          user_id: user.id,
+        const { error: progressError } = await supabase
+          .from("progress_tracking")
+          .insert({
+            client_id: user.id,
           workout_completed: true,
           workout_type: workoutPlan.program_type,
           workout_duration: todayWorkout.duration_minutes || 60,
@@ -208,9 +207,9 @@ export function WorkoutPlanViewer() {
         console.error("Error saving workout progress:", progressError);
       }
 
-      // Award tokens for workout completion
-      try {
-        await TokenService.awardTokensForAction(user.id, 'workout_completed');
+        // Award tokens for workout completion
+        try {
+          await TokenService.awardTokensForAction(user.id, 'WORKOUT_COMPLETED');
         toast.success("Allenamento completato! 🎉 +20 tokens guadagnati!");
       } catch (tokenError) {
         console.error("Error awarding tokens:", tokenError);

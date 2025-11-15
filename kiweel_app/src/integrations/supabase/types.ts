@@ -463,6 +463,9 @@ export type Database = {
           notes: string | null
           tracking_date: string
           weight: number | null
+          workout_completed: boolean | null
+          workout_type: string | null
+          workout_duration: number | null
         }
         Insert: {
           client_id: string
@@ -474,6 +477,9 @@ export type Database = {
           notes?: string | null
           tracking_date?: string
           weight?: number | null
+          workout_completed?: boolean | null
+          workout_type?: string | null
+          workout_duration?: number | null
         }
         Update: {
           client_id?: string
@@ -485,6 +491,9 @@ export type Database = {
           notes?: string | null
           tracking_date?: string
           weight?: number | null
+          workout_completed?: boolean | null
+          workout_type?: string | null
+          workout_duration?: number | null
         }
         Relationships: [
           {
@@ -834,6 +843,136 @@ export type Database = {
           updated_at?: string
         }
         Relationships: []
+      }
+      notifications: {
+        Row: {
+          created_at: string | null
+          id: string
+          message: string
+          read: boolean | null
+          title: string
+          type: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          message: string
+          read?: boolean | null
+          title: string
+          type?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          message?: string
+          read?: boolean | null
+          title?: string
+          type?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "notifications_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      shared_data_access_log: {
+        Row: {
+          accessed_at: string | null
+          id: string
+          shared_data_id: string
+          user_id: string
+        }
+        Insert: {
+          accessed_at?: string | null
+          id?: string
+          shared_data_id: string
+          user_id: string
+        }
+        Update: {
+          accessed_at?: string | null
+          id?: string
+          shared_data_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "shared_data_access_log_shared_data_id_fkey"
+            columns: ["shared_data_id"]
+            isOneToOne: false
+            referencedRelation: "shared_data"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "shared_data_access_log_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_meals: {
+        Row: {
+          calories: number | null
+          carbs: number | null
+          completed: boolean | null
+          created_at: string | null
+          date: string
+          fat: number | null
+          id: string
+          ingredients: string[] | null
+          instructions: string | null
+          name: string
+          protein: number | null
+          time: string
+          user_id: string
+        }
+        Insert: {
+          calories?: number | null
+          carbs?: number | null
+          completed?: boolean | null
+          created_at?: string | null
+          date: string
+          fat?: number | null
+          id?: string
+          ingredients?: string[] | null
+          instructions?: string | null
+          name: string
+          protein?: number | null
+          time: string
+          user_id: string
+        }
+        Update: {
+          calories?: number | null
+          carbs?: number | null
+          completed?: boolean | null
+          created_at?: string | null
+          date?: string
+          fat?: number | null
+          id?: string
+          ingredients?: string[] | null
+          instructions?: string | null
+          name?: string
+          protein?: number | null
+          time?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_meals_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       workout_plans: {
         Row: {

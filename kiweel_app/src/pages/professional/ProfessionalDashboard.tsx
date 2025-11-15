@@ -12,12 +12,10 @@ import {
   Calendar,
   FileText,
   MessageSquare,
-  Plus,
   TrendingUp,
   Clock,
   Star,
-  Activity,
-  DollarSign
+  Activity
 } from "lucide-react";
 import { format } from "date-fns";
 import { it } from "date-fns/locale";
@@ -161,7 +159,7 @@ export default function ProfessionalDashboard() {
           title: 'Nuova prenotazione',
           description: `${booking.users?.name} - ${format(new Date(booking.booking_date), 'dd MMM yyyy HH:mm', { locale: it })}`,
           timestamp: booking.booking_date,
-          client_name: booking.users?.name
+          client_name: booking.users?.name || 'Cliente'
         });
       });
 
@@ -183,7 +181,7 @@ export default function ProfessionalDashboard() {
           title: 'Nuovo messaggio',
           description: message.content.substring(0, 50) + '...',
           timestamp: message.created_at,
-          client_name: message.sender?.name
+          client_name: message.sender?.name || 'Cliente'
         });
       });
 
@@ -205,7 +203,7 @@ export default function ProfessionalDashboard() {
           title: 'Dati condivisi',
           description: `${data.data_type} - ${data.category}`,
           timestamp: data.created_at,
-          client_name: data.users?.name
+          client_name: data.users?.name || 'Cliente'
         });
       });
 

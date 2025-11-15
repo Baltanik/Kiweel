@@ -15,12 +15,8 @@ import {
   Users,
   MessageSquare,
   Calendar,
-  FileText,
   Plus,
-  Eye,
-  Activity,
-  Filter,
-  Clock
+  Eye
 } from "lucide-react";
 import { format } from "date-fns";
 import { it } from "date-fns/locale";

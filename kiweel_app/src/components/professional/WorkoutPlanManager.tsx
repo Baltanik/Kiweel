@@ -12,13 +12,10 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/components/ui/sonner";
 import {
   Plus,
-  Minus,
   Save,
   Users,
   Calendar,
   Dumbbell,
-  Clock,
-  Target,
   Copy,
   Trash2
 } from "lucide-react";

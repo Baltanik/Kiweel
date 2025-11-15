@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { FileText, Calendar, User, Download, ChevronRight, Eye } from "lucide-react";
+import { FileText, Calendar, User, Download, ChevronRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "@/components/ui/sonner";
@@ -32,7 +32,6 @@ export function SharedDataViewer() {
   const [sharedData, setSharedData] = useState<SharedData[]>([]);
   const [loading, setLoading] = useState(true);
   const [filterType, setFilterType] = useState<string>("all");
-  const [selectedData, setSelectedData] = useState<SharedData | null>(null);
   const [detailModalOpen, setDetailModalOpen] = useState(false);
   const [selectedDataId, setSelectedDataId] = useState<string>("");
 

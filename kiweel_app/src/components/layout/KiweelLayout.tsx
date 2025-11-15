@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MobileLayout } from "./MobileLayout";
-import { Coins, Bell } from "lucide-react";
+import { Coins } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { TokenService } from "@/integrations/tokens/tokenService";
 import { APP_NAME } from "@/lib/constants";

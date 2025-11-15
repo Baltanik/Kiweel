@@ -76,8 +76,6 @@ export class NotificationService {
           title,
           message,
           type,
-          action_url: actionUrl,
-          metadata,
           read: false
         })
         .select()
@@ -94,7 +92,15 @@ export class NotificationService {
         });
       }
 
-      return data as Notification;
+      return {
+        id: data.id,
+        user_id: data.user_id,
+        title: data.title,
+        message: data.message,
+        type: data.type || 'info',
+        read: data.read || false,
+        created_at: data.created_at
+      } as Notification;
     } catch (error) {
       console.error('Error creating notification:', error);
       return null;
@@ -125,7 +131,15 @@ export class NotificationService {
 
       if (error) throw error;
 
-      return data as Notification[];
+      return data.map(item => ({
+        id: item.id,
+        user_id: item.user_id,
+        title: item.title,
+        message: item.message,
+        type: item.type || 'info',
+        read: item.read || false,
+        created_at: item.created_at
+      })) as Notification[];
     } catch (error) {
       console.error('Error fetching notifications:', error);
       return [];

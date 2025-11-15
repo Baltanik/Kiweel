@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { KiweelLayout } from "@/components/layout/KiweelLayout";
 import { DietPlanViewer } from "@/components/kiweel/DietPlanViewer";
 import { MealPlanner } from "@/components/kiweel/MealPlanner";

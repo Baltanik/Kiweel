@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -10,13 +10,10 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "@/components/ui/sonner";
 import {
-  Calendar,
   Plus,
   Clock,
-  Utensils,
   ShoppingCart,
   CheckCircle2,
-  Edit3,
   Trash2
 } from "lucide-react";
 import { format, addDays, startOfWeek, isSameDay } from "date-fns";
@@ -183,7 +180,6 @@ export function MealPlanner({ dietPlan }: MealPlannerProps) {
       const { error } = await supabase
         .from("user_meals")
         .insert({
-          id: mealId,
           user_id: user.id,
           date: dayPlan.date,
           name: meal.name,

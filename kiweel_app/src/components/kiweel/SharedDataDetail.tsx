@@ -10,10 +10,8 @@ import { toast } from "@/components/ui/sonner";
 import {
   FileText,
   User,
-  Calendar,
   Eye,
   Download,
-  Share2,
   Lock,
   Unlock,
   Clock,
@@ -106,7 +104,7 @@ export function SharedDataDetail({ sharedDataId, isOpen, onClose }: SharedDataDe
       setSharedData(data as any);
       
       // Check if current user is the owner (professional who created it)
-      setIsOwner(data.professional?.users?.id === user?.id);
+      setIsOwner(data.professional?.user_id === user?.id);
 
       // Log access
       if (user) {
