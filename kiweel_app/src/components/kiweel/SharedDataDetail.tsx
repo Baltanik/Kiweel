@@ -104,7 +104,7 @@ export function SharedDataDetail({ sharedDataId, isOpen, onClose }: SharedDataDe
       setSharedData(data as any);
       
       // Check if current user is the owner (professional who created it)
-      setIsOwner(data.professional?.user_id === user?.id);
+      setIsOwner(data.professional_id === user?.id);
 
       // Log access
       if (user) {
@@ -150,8 +150,7 @@ export function SharedDataDetail({ sharedDataId, isOpen, onClose }: SharedDataDe
         .from("shared_data_access_log")
         .insert({
           shared_data_id: sharedDataId,
-          accessed_by: user.id,
-          action,
+          user_id: user.id,
           accessed_at: new Date().toISOString()
         });
     } catch (error) {

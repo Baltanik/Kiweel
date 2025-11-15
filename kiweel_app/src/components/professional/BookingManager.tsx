@@ -51,7 +51,6 @@ interface BookingManagerProps {
 }
 
 export function BookingManager({ professionalId }: BookingManagerProps) {
-  const { user } = useAuth();
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("upcoming");

@@ -170,7 +170,7 @@ export default function ProfessionalDashboard() {
           id, content, created_at,
           sender:users!messages_sender_id_fkey(name)
         `)
-        .eq("receiver_id", user?.id)
+        .eq("receiver_id", user?.id || '')
         .order("created_at", { ascending: false })
         .limit(3);
 
@@ -201,7 +201,7 @@ export default function ProfessionalDashboard() {
           id: `shared-${data.id}`,
           type: 'shared_data',
           title: 'Dati condivisi',
-          description: `${data.data_type} - ${data.category}`,
+          description: `${data.data_type}${data.category ? ` - ${data.category}` : ''}`,
           timestamp: data.created_at,
           client_name: data.users?.name || 'Cliente'
         });

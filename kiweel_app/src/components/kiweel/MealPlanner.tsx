@@ -45,14 +45,6 @@ interface MealPlannerProps {
   dietPlan?: any;
 }
 
-const MEAL_TYPES = [
-  { id: 'breakfast', name: 'Colazione', time: '08:00', icon: '🌅' },
-  { id: 'snack1', name: 'Spuntino Mattina', time: '10:30', icon: '🍎' },
-  { id: 'lunch', name: 'Pranzo', time: '13:00', icon: '🍽️' },
-  { id: 'snack2', name: 'Spuntino Pomeriggio', time: '16:00', icon: '🥨' },
-  { id: 'dinner', name: 'Cena', time: '20:00', icon: '🌙' },
-  { id: 'snack3', name: 'Spuntino Sera', time: '22:00', icon: '🥛' }
-];
 
 export function MealPlanner({ dietPlan }: MealPlannerProps) {
   const { user } = useAuth();
@@ -60,7 +52,6 @@ export function MealPlanner({ dietPlan }: MealPlannerProps) {
   const [weekPlan, setWeekPlan] = useState<DayPlan[]>([]);
   const [selectedDay, setSelectedDay] = useState<DayPlan | null>(null);
   const [isAddMealOpen, setIsAddMealOpen] = useState(false);
-  const [editingMeal, setEditingMeal] = useState<Meal | null>(null);
   const [shoppingList, setShoppingList] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -109,7 +100,7 @@ export function MealPlanner({ dietPlan }: MealPlannerProps) {
           carbs: meal.carbs || 0,
           fat: meal.fat || 0,
           ingredients: meal.ingredients || [],
-          instructions: meal.instructions,
+          instructions: meal.instructions || undefined,
           completed: meal.completed || false
         }));
       } else if (dietPlan?.weekly_plan) {

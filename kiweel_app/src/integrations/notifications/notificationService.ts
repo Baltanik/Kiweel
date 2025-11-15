@@ -64,9 +64,7 @@ export class NotificationService {
     userId: string,
     title: string,
     message: string,
-    type: Notification['type'] = 'info',
-    actionUrl?: string,
-    metadata?: any
+    type: Notification['type'] = 'info'
   ): Promise<Notification | null> {
     try {
       const { data, error } = await supabase
