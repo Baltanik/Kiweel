@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cd kiweel_app && npm ci && npm run build",
+  "outputDirectory": "kiweel_app/dist",
+  "installCommand": "cd kiweel_app && npm ci",
+  "framework": "vite"
+}
